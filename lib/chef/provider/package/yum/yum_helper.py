@@ -12,7 +12,7 @@ import signal
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'simplejson'))
 try: import json
-except: ImportError: import simplejson as json
+except ImportError: import simplejson as json
 import re
 from rpmUtils.miscutils import stringToVersion,compareEVR
 from rpmUtils.arch import getBaseArch, getArchList
