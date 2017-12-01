@@ -181,6 +181,14 @@ RSpec.configure do |config|
   config.filter_run_excluding :broken => true
   config.filter_run_excluding :not_wpar => true unless wpar?
   config.filter_run_excluding :not_supported_under_fips => true if fips?
+  config.filter_run_excluding :rhel => true unless rhel?
+  config.filter_run_excluding :rhel5 => true unless rhel5?
+  config.filter_run_excluding :rhel6 => true unless rhel6?
+  config.filter_run_excluding :rhel7 => true unless rhel7?
+  config.filter_run_excluding :not_rhel => true if rhel?
+  config.filter_run_excluding :not_rhel5 => true if rhel5?
+  config.filter_run_excluding :not_rhel6 => true if rhel6?
+  config.filter_run_excluding :not_rhel7 => true if rhel7?
 
   # these let us use chef: ">= 13" or ruby: "~> 2.0.0" or any other Gem::Dependency-style constraint
   config.filter_run_excluding chef: DependencyProc.with(Chef::VERSION)
