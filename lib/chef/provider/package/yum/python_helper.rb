@@ -49,8 +49,6 @@ class Chef
             @inpipe, inpipe_write = IO.pipe
             outpipe_read, @outpipe = IO.pipe
             @stdin, @stdout, @stderr, @wait_thr = Open3.popen3("#{yum_command} #{outpipe_read.fileno} #{inpipe_write.fileno}", outpipe_read.fileno => outpipe_read, inpipe_write.fileno => inpipe_write, close_others: false)
-#puts "#{yum_command} #{outpipe_read.fileno} #{inpipe_write.fileno}"
-          #  @stdin, @stdout, @stderr, @wait_thr = Open3.popen3("#{yum_command} 3 4", 3 => outpipe_read, 4 => inpipe_write, close_others: true)
             outpipe_read.close
             inpipe_write.close
           end
