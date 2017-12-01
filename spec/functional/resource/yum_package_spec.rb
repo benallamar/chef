@@ -435,7 +435,7 @@ gpgcheck=0
         expect(shell_out("rpm -q --queryformat '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n' chef_rpm").stdout.chomp).to match("^chef_rpm-1.2-1.x86_64$")
       end
 
-      it "downgrade on a local file raises an error" do
+      it "downgrade on a local file raises an error", not_rhel5: true do
         preinstall("chef_rpm-1.10-1.x86_64.rpm")
         yum_package.version "1.2-1"
         yum_package.package_name("#{CHEF_SPEC_ASSETS}/yumrepo/chef_rpm-1.2-1.x86_64.rpm")
